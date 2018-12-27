@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+  <f:event type="preRenderView" 
+           listener="#{accueilController.informationsSurUtilisateur}" />
+
+  <ui:insert name="metadata"/>
+
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <h:outputStylesheet name="css/default.css"  />
+    <h:outputStylesheet name="css/cssLayout.css"  />
+    <h:outputStylesheet name="css/template.css"  />
+    <title>#{bundle.titreGeneral}</title>
+  </h:head>
+
+  <h:body>
+
+
+    <div id="top" class="top">
+      <ui:insert name="top">
+
+        <h:panelGroup rendered="#{empty request.userPrincipal}">
+          #{bundle.titreGeneral}
+        </h:panelGroup>
+        
+        <h:panelGroup rendered="#{not empty request.userPrincipal}">
+
+          <h:form>
+            #{bundle.titreGeneral} - #{bundle.identifiant}:
+            <h:outputText value="#{accueilController.login.login}"/> - #{bundle.nom}:
+            <h:outputText id="nom" value="#{accueilController.login.personne.nom}" />
+            <h:outputText value=" (Administrateur)"
+                          rendered = "#{securityContext.isUserInRole('admin')}"/>
+            <!-- TODO: ajouter bouton "logout". -->
+
+            <h:commandButton value="Logout" action="#{accueilController.fin()}"/>
+          </h:form>
+
+        </h:panelGroup>
+
+      </ui:insert>
+    </div>
+    <div>
+      <div id="left">
+        <ui:insert name="left">
+          <ui:include src="/WEB-INF/menu.xhtml"/>
+        </ui:insert>
+      </div>
+      <div id="content" class="left_content">
+        <ui:insert name="content">Content</ui:insert>
+      </div>
+    </div>
+  </h:body>
+
+</html>

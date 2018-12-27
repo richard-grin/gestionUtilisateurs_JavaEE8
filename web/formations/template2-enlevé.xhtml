@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:insert name="metadata"/>
+
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <h:outputStylesheet library="css" name="default.css"  />
+    <h:outputStylesheet library="css" name="cssLayout.css"  />
+    <h:outputStylesheet library="css" name="template.css"  />
+    <title>#{bundle.titreGeneral}</title>
+  </h:head>
+
+  <h:body>
+
+    <div id="top" class="top">
+      <ui:insert name="top">
+        
+
+        #{bundle.titreGeneral}
+        <!-- Affiché seulement si utilisateur logué. -->
+        <h:panelGroup rendered="#{securityContext.callerPrincipal != null}">
+          ++#{securityContext.callerPrincipal}++
+          - #{bundle.identifiant}:
+          <h:outputText value="#{accueilController.login.login}"/> - #{bundle.nom}:
+          <h:outputText id="nom" value="#{accueilController.login.personne.nom}" />
+          <h:outputText value=" (Administrateur)"
+                      rendered = "#{securityContext.isUserInRole('admin')}"/>
+        </h:panelGroup>
+      </ui:insert>
+    </div>
+    <div>
+      <div id="left">
+        <ui:insert name="left">
+          <ui:include src="menu.xhtml"/>
+        </ui:insert>
+      </div>
+      <div id="content" class="content">
+        <ui:insert name="content">Content template protégé</ui:insert>
+      </div>
+    </div>
+  </h:body>
+
+</html>

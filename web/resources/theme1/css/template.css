@@ -1,0 +1,13 @@
+/* 
+    Document   : template
+    Created on : 6 oct. 2011, 10:54:14
+    Author     : richard
+    Description:
+        Tests pour configurer le menu de gauche.
+*/
+
+#left {width:150px; background: #0578FF;}
+#left ul {width:auto; list-style-type: none;}
+#left ul li {margin:0px; padding:5px; height: auto; position: relative;}
+#left ul li a {color: #FFFFFF; font-weight: bold; text-decoration: none;}
+#left ul li a:hover {background-color: rgb(245,235,207); color: #444444;}
