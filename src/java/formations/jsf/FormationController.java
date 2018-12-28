@@ -6,17 +6,18 @@ import ejb.LoginFacade;
 import fr.unice.formations.entite.Formation;
 import fr.unice.formations.entite.Inscription;
 import fr.unice.formations.entite.Login;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.security.enterprise.SecurityContext;
 
@@ -26,8 +27,9 @@ import javax.security.enterprise.SecurityContext;
  * @author richard
  */
 @Named(value = "formationController")
-@RequestScoped
-public class FormationController {
+//@RequestScoped
+@ViewScoped
+public class FormationController implements Serializable {
 
   @Inject
   private AccueilController accueilController;

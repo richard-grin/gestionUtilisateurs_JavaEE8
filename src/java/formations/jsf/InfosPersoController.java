@@ -7,13 +7,13 @@ import fr.unice.formations.entite.Personne;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.validator.ValidatorException;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.security.enterprise.SecurityContext;
 import util.HashMdp;
@@ -29,7 +29,8 @@ import util.HashMdp;
  * @author richard
  */
 @Named(value = "infosPersoController")
-@RequestScoped
+@ViewScoped
+//@RequestScoped
 public class InfosPersoController implements Serializable {
 
   private Login login;
