@@ -2,6 +2,7 @@ package util;
 
 
 import javax.mail.Address;
+import javax.mail.MailSessionDefinition;
 import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -25,12 +26,21 @@ import javax.naming.NamingException;
 //  from = "richard.grin@unice.fr",
 //  transportProtocol = "smtps"
 //)
+@MailSessionDefinition(
+        name = "java:app/mail/free",
+        host = "smtp.free.fr",
+        user = "richard.grin",
+        from = " richard.grin@free.fr",
+        storeProtocol = "imap",
+        transportProtocol = "smtp"
+)
 public class EnvoyeurEmail {
   // TODO: Tester avec injection de la Session
   private final Session sessionEmail;
 
   public EnvoyeurEmail(String nomJNDI) throws NamingException {
     InitialContext ic = new InitialContext();
+    System.out.println("EnvoyeurEmail : ic=" + ic + "; nomJNDI=" + nomJNDI);
     this.sessionEmail = (Session)ic.lookup(nomJNDI);
   }
   

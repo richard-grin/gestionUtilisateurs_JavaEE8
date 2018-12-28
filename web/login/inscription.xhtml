@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
   <body>
-    <ui:composition template="./formations/templateBase.xhtml">
+    <ui:composition template="/WEB-INF/template.xhtml">
 
       <ui:define name="content">
         <h:form id="infosCompte">
@@ -17,8 +17,8 @@
                      listener="#{accueilController.validateMdps}" />
             <h:outputLabel value="#{bundle.identifiant}" for="login" />
             <h:panelGroup>
-              <h:inputText id="login" value="#{accueilController.login.login}" 
-                           title="#{bundle.idTitle}" required="true" 
+              <h:inputText id="login" value="#{accueilController.login.login}"
+                           title="#{bundle.idTitle}" required="true"
                            requiredMessage="#{bundle.idRequiredMessage}"
                            validator="#{accueilController.validateLogin}">
                 <f:ajax event="blur" render="messageLogin messages" />

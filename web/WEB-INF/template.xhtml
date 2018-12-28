@@ -34,9 +34,10 @@
             #{bundle.titreGeneral} - #{bundle.identifiant}:
             <h:outputText value="#{accueilController.login.login}"/> - #{bundle.nom}:
             <h:outputText id="nom" value="#{accueilController.login.personne.nom}" />
-            <h:outputText value=" (Administrateur)"
-                          rendered = "#{securityContext.isUserInRole('admin')}"/>
-            <!-- TODO: ajouter bouton "logout". -->
+            - #{bundle.prenom}:
+            <h:outputText id="prenom" value="#{accueilController.login.personne.prenom}" />
+            <h:outputText value=" (Administrateur) "
+                          rendered = "#{request.isUserInRole('admin')}"/>
 
             <h:commandButton value="Logout" action="#{accueilController.fin()}"/>
           </h:form>

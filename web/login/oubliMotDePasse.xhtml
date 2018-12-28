@@ -7,7 +7,7 @@
 
   <body>
 
-    <ui:composition template="./formations/templateBase.xhtml">
+    <ui:composition template="/WEB-INF/template.xhtml">
 
       <ui:define name="content">
         <h1>#{bundle.oubliMotDePasseTitrePage}</h1>
@@ -35,7 +35,7 @@
             <h:link 
               rendered="#{oubliMotDePasseController.phase2}"
               value="Entrer dans l'application" 
-              outcome="/faces/formations/informationsPerso" />
+              outcome="/login/formations/informationsPerso" />
           </h:form>
         </f:view>
 

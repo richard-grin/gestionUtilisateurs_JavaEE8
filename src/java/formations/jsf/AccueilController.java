@@ -104,7 +104,7 @@ public class AccueilController implements Serializable {
   
   @PostConstruct
   private void init() {
-    NOM_JNDI_EMAIL = externalContext.getInitParameter("fr.unice.EMAI_JNDI_NAME");
+    NOM_JNDI_EMAIL = externalContext.getInitParameter("fr.unice.EMAIL_JNDI_NAME");
   }
 
   /**
@@ -149,13 +149,13 @@ public class AccueilController implements Serializable {
    * @return
    */
   public String oubliMotDePasse() {
-    return "oubliMotDePasse";
+    return "/login/oubliMotDePasse";
   }
 
   public Login getLogin() {
-    String nomLogin = this.securityContext.getCallerPrincipal().getName();
+//    String nomLogin = this.securityContext.getCallerPrincipal().getName();
 //    System.out.println("+=+=+= Nom de l'utilisateur dans getLogin() de AcceuilController=" + nomLogin);
-    this.login = loginFacade.findByNom(nomLogin);
+//    this.login = loginFacade.findByNom(nomLogin);
     
     /*
     if (login == null) {
@@ -224,7 +224,7 @@ public class AccueilController implements Serializable {
     // Les informations saisies par l'utilisateur iront dans ces objets.
     personne = new Personne();
     login = new Login();
-    return "/inscription";
+    return "/login/inscription";
   }
 
   /**
@@ -261,7 +261,7 @@ public class AccueilController implements Serializable {
     // Envoi email de demande de confirmation
     envoiEmailDemandeConfirmation();
     // Envoi sur une page d'accueil explicative avec menu.
-    return "/apresInscription";
+    return "/login/apresInscription";
   }
 
   private void envoiEmailDemandeConfirmation() {
@@ -289,7 +289,7 @@ public class AccueilController implements Serializable {
       String lienConfirmation
               = "http://localhost:8080" 
               + externalContext.getApplicationContextPath() 
-              + "/faces/confirmation.xhtml?"
+              + "/login/confirmation.xhtml?"
               + "id=" + login.getLogin()
               + "&email=" + login.getEmail()
               + "&cle=" + code;
@@ -409,7 +409,7 @@ public class AccueilController implements Serializable {
       System.out.println("ERREUR !!");
       System.out.println("login2 : " + login2.getCode() + ";" + login2.getEmail() + ";" + login2.getStatut());
       System.out.println("*****Confirmation PAS OK pour " + loginConfirm + " !!!!");
-      return "/confirmation-error";
+      return "/login/confirmation-error";
     }
   }
 
