@@ -2,7 +2,6 @@ package util;
 
 
 import javax.mail.Address;
-import javax.mail.MailSessionDefinition;
 import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -18,14 +17,14 @@ import javax.naming.NamingException;
  * Envoyeur d'emails.
  * @author richard
  */
-@MailSessionDefinition(
-  name = "java:app/mail/unice",
-  host = "smtp.unice.fr",
-  user = "grin",
-  password = "*********",
-  from = "richard.grin@unice.fr",
-  transportProtocol = "smtps"
-)
+//@MailSessionDefinition(
+//  name = "java:app/mail/unice",
+//  host = "smtp.unice.fr",
+//  user = "grin",
+//  password = "*********",
+//  from = "richard.grin@unice.fr",
+//  transportProtocol = "smtps"
+//)
 public class EnvoyeurEmail {
   // TODO: Tester avec injection de la Session
   private final Session sessionEmail;
