@@ -22,7 +22,7 @@ import javax.naming.NamingException;
   name = "java:app/mail/unice",
   host = "smtp.unice.fr",
   user = "grin",
-  password = "carfe7-7",
+  password = "*********",
   from = "richard.grin@unice.fr",
   transportProtocol = "smtps"
 )
