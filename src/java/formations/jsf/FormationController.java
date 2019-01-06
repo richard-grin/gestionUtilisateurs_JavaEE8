@@ -145,7 +145,7 @@ public class FormationController implements Serializable {
 //    if (autresFormations == null) {
 //      return null;
 //    }
-    System.out.println("1. autresformations=" + autresFormations);
+//    System.out.println("1. autresformations=" + autresFormations);
     Set<Formation> formationsActuelles = getInscriptionsDuLogin().keySet();
     if (formationsActuelles.isEmpty()) {
 //      System.out.println("2. autresformations=" + autresFormations);

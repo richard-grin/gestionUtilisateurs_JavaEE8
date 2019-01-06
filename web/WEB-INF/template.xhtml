@@ -26,6 +26,9 @@
 
         <h:panelGroup rendered="#{empty request.userPrincipal}">
           #{bundle.titreGeneral}
+          <h:button value="Login" outcome="/login/login_custom_new">
+            <f:param name="new" value="true"/>
+          </h:button>
         </h:panelGroup>
         
         <h:panelGroup rendered="#{not empty request.userPrincipal}">
@@ -35,8 +38,8 @@
             <h:outputText value="#{accueilController.login.login}"/> - #{bundle.nom}:
             <h:outputText id="nom" value="#{accueilController.login.personne.nom}" />
             - #{bundle.prenom}:
-            <h:outputText id="prenom" value="#{accueilController.login.personne.prenom}" />
-            <h:outputText value=" (Administrateur) "
+            <h:outputText id="prenom" value="#{accueilController.login.personne.prenom} " />
+            <h:outputText value="(Administrateur) "
                           rendered = "#{request.isUserInRole('admin')}"/>
 
             <h:commandButton value="Logout" action="#{accueilController.fin()}"/>
@@ -44,12 +47,6 @@
 
         </h:panelGroup>
         
-        <h:panelGroup rendered="#{empty request.userPrincipal}">
-          <h:button value="Login" outcome="/login/login_custom_new">
-            <f:param name="new" value="true"/>
-          </h:button>
-        </h:panelGroup>
-
       </ui:insert>
     </div>
     <div>
@@ -57,6 +54,7 @@
         <ui:insert name="left">
           <ui:include src="/WEB-INF/menu.xhtml"/>
         </ui:insert>
+        <h:messages style="color: green; font-weight: bold; background-color: #FFFFFF" globalOnly="true"/>
       </div>
       <div id="content" class="left_content">
         <ui:insert name="content">Content</ui:insert>

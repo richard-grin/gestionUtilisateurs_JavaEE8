@@ -107,7 +107,7 @@ public class LoginBeanAvecNew implements Serializable {
         break;
       case SUCCESS:
         flash.setKeepMessages(true);
-        addInfo("Login réussi");
+        addInfo("Login réussi pour " + nom);
         externalContext.redirect(
                 externalContext.getRequestContextPath()
                 + "/index.xhtml");
@@ -133,14 +133,22 @@ public class LoginBeanAvecNew implements Serializable {
   }
 
   private AuthenticationStatus continueAuthentication() {
+    System.out.println("=============isNew= "+ isNew);
     Credential credential
             = new UsernamePasswordCredential(nom, new Password(motDePasse));
-    return securityContext.authenticate(
+    AuthenticationStatus status = securityContext.authenticate(
             (HttpServletRequest) externalContext.getRequest(),
             (HttpServletResponse) externalContext.getResponse(),
             withParams()
                     .newAuthentication(isNew)
                     .credential(credential));
+    return status;
+//    return securityContext.authenticate(
+//            (HttpServletRequest) externalContext.getRequest(),
+//            (HttpServletResponse) externalContext.getResponse(),
+//            withParams()
+//                    .newAuthentication(isNew)
+//                    .credential(credential));
   }
 
   /**

@@ -212,7 +212,7 @@ public class AccueilController implements Serializable {
   }
   
   public boolean isAdministrateur() {
-    System.out.println("!!!!!!isAdministrateur : " + securityContext.isCallerInRole("admin"));
+//    System.out.println("!!!!!!isAdministrateur : " + securityContext.isCallerInRole("admin"));
     return securityContext.isCallerInRole("admin");
   }
   /**

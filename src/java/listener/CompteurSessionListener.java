@@ -7,10 +7,11 @@ import javax.servlet.http.HttpSessionListener;
 
 /**
  * Web application lifecycle listener.
+ * Pour tests....
  *
  * @author grin
  */
-@WebListener("Pour compter le nombre d'utilisateurs connectés")
+//@WebListener("Pour compter le nombre d'utilisateurs connectés")
 public class CompteurSessionListener implements HttpSessionListener {
   @Inject
   private CompteurSessions compteurSessions;
