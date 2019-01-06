@@ -85,7 +85,7 @@ public class LoginBean {
     AuthenticationStatus status = securityContext.authenticate(
             (HttpServletRequest) externalContext.getRequest(),
             (HttpServletResponse) externalContext.getResponse(),
-            withParams().credential(credential));
+            withParams().credential(credential).rememberMe(true));
     if (status.equals(SEND_CONTINUE)) { // ??**??
       // Récupère les infos sur le login et le range dans le bean de porté
       // session accueilController.

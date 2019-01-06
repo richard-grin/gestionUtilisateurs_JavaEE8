@@ -43,6 +43,12 @@
           </h:form>
 
         </h:panelGroup>
+        
+        <h:panelGroup rendered="#{empty request.userPrincipal}">
+          <h:button value="Login" outcome="/login/login_custom_new">
+            <f:param name="new" value="true"/>
+          </h:button>
+        </h:panelGroup>
 
       </ui:insert>
     </div>
